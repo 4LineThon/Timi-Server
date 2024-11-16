@@ -15,7 +15,7 @@ class ResultViewSet(mixins.CreateModelMixin, mixins.ListModelMixin, mixins.Destr
         """
         results = self.queryset.filter(group_id=group_id)
         if not results.exists():
-            return Response({"detail": "Results not found."}, status=status.HTTP_404_NOT_FOUND)
+            return Response({"detail": "Results not found."})
         
         serializer = self.get_serializer(results, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
